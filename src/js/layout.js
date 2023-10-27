@@ -1,11 +1,14 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Form, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
+import { Contactform } from "./views/contactform";
+import { ContactFormUpdate } from "./views/contactformupdate";
 import injectContext from "./store/appContext";
+
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -25,7 +28,9 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/single/:theid" element={<Single />} />
+						<Route path="/contactform" element={<Contactform />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
+						<Route path="/contactformupdate/:id" element={<ContactFormUpdate />} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>

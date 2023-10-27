@@ -1,15 +1,30 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+import { Context } from "../store/appContext";
+import { ContactCard } from "../component/contactCard";
+
+export const Home = () => {
+	const { store, actions } = useContext(Context);
+	// useEffect (() => {actions.loadContacts}, [store.contacts])
+
+	return (
+		<>
+			<div className="sticky-top mt-5 ms-5">
+
+			</div>
+			<div className="container">
+				<ContactCard />
+				<div className="container d-flex justify-content-center sticky-bottom">
+					<Link to='/contactform'>
+						<button type="button" className="btn btn-primary me-2 mt-2">Add a New Contact!</button>
+					</Link>
+					<button type="button" className="btn btn-primary me-2 mt-2" onClick={(e) => {
+						e.preventDefault();
+						actions.deleteAllContacts("Nuno")
+					}}>Delete all contacts</button>
+				</div>
+			</div>
+		</>
+	);
+};
